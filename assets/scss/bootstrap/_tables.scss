@@ -12,16 +12,15 @@
   td {
     padding: $table-cell-padding;
     vertical-align: top;
-    border-top: $table-border-width solid $table-border-color;
   }
 
   thead th {
     vertical-align: bottom;
-    border-bottom: (2 * $table-border-width) solid $table-border-color;
+    border-bottom: ($table-border-width) solid #3D3F40;
   }
 
   tbody + tbody {
-    border-top: (2 * $table-border-width) solid $table-border-color;
+    border-top: (2 * $table-border-width) solid $gray-300;
   }
 }
 

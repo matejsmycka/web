@@ -1,6 +1,6 @@
-baseURL = "https://matejsmycka.github.io/personal-web/"
+baseURL = "https://matejsmycka.github.io/web/"
 languageCode = "en-us"
-title = "Portfolio"
+title = "Matej Smycka"
 themesDir = "./"
 
 pygmentsCodeFences = true
@@ -17,18 +17,18 @@ pygmentsUseClasses = true
 summaryLength = 30
 
 [[menu.main]]
-    name = "Home"
+    name = ""
     url = "/"
     weight = 1
 
 [[menu.main]]
-    name = "Content"
+    name = "Home"
     url = "/contents/"
     weight = 2
 
 [params]
   google_analytics_id="G-54DDM7XNG7"
-  homepage_button_link = '/personal-web/contents/'
+  homepage_button_link = '/web/contents/'
   homepage_button_text = 'Continue'
   homepage_intro = 'Whisper is a documentation theme built with Hugo. The design and functionality is intentionally minimal.'
   # homepage_image = '/images/'

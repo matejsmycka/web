@@ -11,6 +11,7 @@ Collection of my work and projects.
 
 ## Projects
 
-- [GitHub](https://github.com/MatejSmycka)
-- [HackTheBox](https://app.hackthebox.com/users/451820)
-- [MUNI Writeups](https://writeups.csirt.muni.cz/)
+- [GitHub](https://github.com/MatejSmycka) - My contributions to open-source and projects focused on malware, exploitation, or
+cybersecurity in general.
+- [HackTheBox](https://app.hackthebox.com/public/users/451820) - Hack The Box is an online platform allowing you to test and advance your skills in cybersecurity.
+- [MUNI CTF Writeups](https://writeups.csirt.muni.cz/) - Initiative to make MU reports publicly accessible.

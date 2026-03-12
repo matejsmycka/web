@@ -3,6 +3,9 @@ title: "Using AI coding tools for vulnerability research"
 date: 2026-03-12T00:00:00+01:00
 ---
 
+> As usually, any information in this post will be obsolete with release of new "industry-disruptive" model (which happens every two weeks :)).
+
+
 Over the past months, I have been building various AI SAST and DAST prototypes for vulnerability research and bug hunting. I tried different approaches, models, and tools, but spoiler alert: I was not able to build **anything** better than the default Clade Code.
 
 It might be a skill issue, or the fact that nobody has created a better AI security tool than the default Claude with Opus 4.6.
@@ -11,7 +14,11 @@ The following section discusses my findings from using general AI coding tools s
 
 That said, I gathered some insights on how to use and optimize them to find vulnerabilities.
 
-During my experiments, I found **zero-day vulnerabilities** in widely used open-source projects, and I wholeheartedly believe that AI **could** replace at least 40% of the work of a human vulnerability researcher, mainly because it reads code more efficiently than humans do.
+During my experiments, I found **zero-day vulnerabilities** in widely used open-source projects, which I will hopefully cover in future.
+
+As a result of my experiments, I wholeheartedly believe that AI **could** replace at least 40% of the work of a human vulnerability researcher, mainly because it reads code more efficiently than humans do.
+
+Validation may be the biggest portion of manual work of future security engineers, as LLMs will be replacing some parts of traditional vulnerability discovery like code review.
 
 ## Prompting
 
@@ -79,23 +86,31 @@ I tried ChatGPT, Claude, and other models, but none of them could outperform Opu
 
 However, not all Opuses are equal; for example, the Opus in [Antigravity](https://antigravity.google/) is much stupider than the One in Claude Code.
 
-> This info is usually valid until next week, but the industry is disrupted by the release of a new competitor model...
-
 I heard that success of Opus can be attributed to Anthropic's focus on building very good with most basic tooling like bash and sed. Instead of trying to make a cheaper model more usable with fancy tooling like [vector indexing](https://cursor.com/docs/agent/tools/search).
 
 However reality might be more complex, and only time will tell.
 
-## Harness
+## Vulnerabilities
+
+From my experience, AIs detect only well documented and known classes of vulnerabilities like OWASP 10 or memory corruption issues. They worked really well on classes like SSRF, XSS and buffer overflows.
+
+They struggle with vulnerabilities that require more creativity.
+
+For example I had to manually guide the model to find specific research on particular vulnerabilities like exfiltration of data with CSS fonts.
+
+This could be because the techniques are niche and fairly new, however researcher must keep in mind, that although AI are trained on vast amounts of data, they still do not see attack vectors like human would.
+
+## Cost and manual overhead
 
 I played with GLM 4.7 for agentic small tasks, and created guiderails for this weaker but cheap model; however, when I look back. The time invested in fixing the issues exceeded the cost of using the more expensive model.
 
 And bear in mind that every guiderail you build will eventually be outdated when smarter models get cheaper, do not forget to include time when calculating price :D.
 
-## Output
+This goes without saying but the manual overhead is still tremendous, you need to constantly monitor and adjust tasks, it is not an autonomous process at all.
 
-This goes without saying but the manual overhead is still tremendous, you need to constantly monitor and adjust tasks.
+## Conclusion
 
-Validation may be the biggest portion of manual work of future security engineers, as LLMs will be replacing some parts of traditional vulnerability discovery like code review.
+In conclusion, while models like Claude currently excel at some aspects of vulnerability research, they are still limited in their ability to understand context and threat model of specific projects. Do not rely on them too much, however completely not using AI is not a viable option either.
 
 ## References
 

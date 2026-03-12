@@ -1,11 +1,11 @@
 ---
 title: 'Talks'
 date: 2026-01-10T15:14:39+10:00
-weight: 1
+weight: 2
 ---
 
-<!--more-->
 Talks I have given at various conferences and meetups.
+<!--more-->
 
 
 | Where       |  About         |

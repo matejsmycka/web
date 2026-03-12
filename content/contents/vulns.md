@@ -4,11 +4,12 @@ date: 2026-01-10T15:14:39+10:00
 weight: 1
 ---
 
+Security research and bug bounty findings.
 <!--more-->
 
 ## Security Research
 
-- [Stack Overflow in FreeType](https://gitlab.freedesktop.org/freetype/freetype/-/issues/1395)- Tab crash in Mozilla Firefox and Chromium
+- [Stack Overflow in FreeType](https://gitlab.freedesktop.org/freetype/freetype/-/issues/1395) - Tab crash in Mozilla Firefox and Chromium
 - [Signed int overflow in dr_libs MS-ADPCM decoder](https://github.com/mackron/dr_libs/issues/295) - Potential DoS in applications using Qt Multimedia for audio processing
 - [CVE-2025-12097](https://nvd.nist.gov/vuln/detail/CVE-2025-12097) - LFI in NI System Web Server
 - [Hacking via eSCL protocol](https://writeups.csirt.muni.cz/content/blog/escl/) - Article on the eSCL protocol and its security implications.

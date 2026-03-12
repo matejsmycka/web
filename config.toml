@@ -27,6 +27,7 @@ summaryLength = 30
     weight = 2
 
 [params]
+  mainSections = ["contents"]
   google_analytics_id="G-54DDM7XNG7"
   homepage_button_link = '/web/contents/'
   homepage_button_text = 'Continue'

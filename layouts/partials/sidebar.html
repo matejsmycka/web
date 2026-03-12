@@ -1,11 +1,13 @@
-{{$currentNode := .}}
+{{ $contentsSection := .Site.GetPage "/contents" }}
+{{ if $contentsSection }}
 <div class="docs-menu">
-  <h4>{{ .Section | humanize }}</h4>
+  <h4>Content</h4>
   <ul>
-    {{ range where .Site.RegularPages "Section" .Section }}
-    <li class="{{ if eq .File.UniqueID $currentNode.File.UniqueID }}active {{ end }}">
+    {{ range $contentsSection.Pages.ByWeight }}
+    <li class="{{ if or (eq .RelPermalink $.RelPermalink) ($.IsDescendant .) }}active{{ end }}">
       <a href="{{ .Permalink }}">{{ .Title }}</a>
     </li>
     {{ end }}
   </ul>
 </div>
+{{ end }}

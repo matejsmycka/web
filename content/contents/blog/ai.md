@@ -2,15 +2,17 @@
 title: "Using AI coding tools for vulnerability research"
 date: 2026-03-12T00:00:00+01:00
 ---
+Published: 2026-03-12
+<!--more-->
 
 > As usually, any information in this post will be obsolete with release of new "industry-disruptive" model (which happens every two weeks :)).
 
 
-Over the past months, I have been building various AI SAST and DAST prototypes for vulnerability research and bug hunting. I tried different approaches, models, and tools, but spoiler alert: I was not able to build **anything** better than the default Clade Code.
+Over the past months, I have been building various AI SAST and DAST prototypes for vulnerability research and bug hunting. I tried different approaches, models, and tools, but spoiler alert: I was not able to build **anything better than the default Clade Code**.
 
-It might be a skill issue, or the fact that nobody has created a better AI security tool than the default Claude with Opus 4.6.
+It might be a skill issue, or it may be because *nobody* has created a better AI security tool than the default Claude with Opus 4.6.
 
-The following section discusses my findings from using general AI coding tools such as Claude, Gemini-cli, and Codex. It assumes the reader is familiar with these tools and how they work internally.
+This post discusses my findings from using general AI coding tools such as Claude, Gemini-cli, and Codex. It assumes the reader is familiar with these tools and how they work internally.
 
 That said, I gathered some insights on how to use and optimize them to find vulnerabilities.
 

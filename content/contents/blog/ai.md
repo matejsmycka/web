@@ -50,8 +50,6 @@ I advise letting models run multiple times for more consistent results. Always r
 
 For example, here is the architecture of a tool I built for finding "interesting" scopes in code:
 
-![determinism](/web/Screenshot%20From%202026-03-06%2010-34-26.png)
-
 It repeatedly runs multiple agents that vote on whether a scope is interesting (read: vulnerable) or not.
 
 Another important aspect to consider when running agents in a loop is memory management.

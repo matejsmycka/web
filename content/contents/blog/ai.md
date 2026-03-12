@@ -46,7 +46,17 @@ For example:
 
 There is [inherent randomness](https://thinkingmachines.ai/blog/defeating-nondeterminism-in-llm-inference/) in how models interpret prompts and generate responses. Even with careful prompting, the model may perform differently on the same inputs.
 
-I advise letting models run multiple times for more consistent results. Always remember to clear context between runs, because context pollution will lead to regression over the same findings.
+I advise letting models run multiple times for more consistent results. Always remember to clear context between runs, because context pollution will lead to regression over the same findings
+
+For example here is architecture of tool I built for finding "interesting" scopes in code:
+
+![determinism](/web/Screenshot%20From%202026-03-06%2010-34-26.png)
+
+It just runs again and again multiple agents which vote if a scope is interesting (read vulnerable) or not.
+
+Other very important aspect which you have to consider during run of agent in loop is memory management.
+
+For example, if you are running agent more than once with same prompt and clean context, you have to be careful about what the model remembers from previous runs.
 
 Always look out for memory files (such as `MEMORY.md`) in the repo, because, as statistical models, even if you say "Stack overflows are not considered security vulnerabilities", the model will still, at best, convolute messages about unnecessary comments on the findings and, in the worst case, will repeatedly output the same findings.
 
@@ -91,6 +101,10 @@ However, not all Opuses are equal; for example, the Opus in [Antigravity](https:
 I heard that success of Opus can be attributed to Anthropic's focus on building very good with most basic tooling like bash and sed. Instead of trying to make a cheaper model more usable with fancy tooling like [vector indexing](https://cursor.com/docs/agent/tools/search).
 
 However reality might be more complex, and only time will tell.
+
+BTW for searching information, Gemini in web client with "deep research" is much better than any alternatives even though gemini is considered to be less capable model compared to others.
+
+I guess it makes sense that Google as company makes nice search tools.
 
 ## Vulnerabilities
 

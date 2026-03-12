@@ -32,18 +32,6 @@ For example:
 - https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/overview
 - https://developers.openai.com/cookbook/examples/gpt-5/gpt-5-2_prompting_guide/
 
-## Consistency and repetition
-
-There is [inherent randomness](https://thinkingmachines.ai/blog/defeating-nondeterminism-in-llm-inference/) in how models interpret prompts and generate responses. Even with careful prompting, the model may perform differently on the same inputs. I advise letting models run multiple times for more consistent results. Always remember to clear context between runs, because context pollution will lead to regression over the same findings.
-
-For example, I built a tool for finding "interesting" scopes in code that repeatedly runs multiple agents which vote on whether a scope is interesting (read: vulnerable) or not.
-
-Another important aspect to consider when running agents in a loop is memory management. If you are running an agent more than once with the same prompt and clean context, you have to be careful about what the model remembers from previous runs.
-
-Always look out for memory files (such as `MEMORY.md`) in the repo, because, as statistical models, even if you say "Stack overflows are not considered security vulnerabilities", the model will still, at best, convolute messages about unnecessary comments on the findings and, in the worst case, will repeatedly output the same findings. If you want to ignore something, remove any memory files from the repo before running the model, and put a very general term in the initial prompt to avoid the whole XYZ class of vulnerabilities.
-
-But be careful with too many negations in the prompt, because the model may do exactly what you're trying to avoid after a few rounds of context compaction.
-
 ## Context is everything
 
 Understanding the context window is the most crucial aspect of using coding agents. There is a never-ending balance between giving the model enough context to make good output and not overwhelming it with too much information. To see how much context is being used, Claude has a built-in command `/context`, which shows the current context window.
@@ -56,7 +44,7 @@ Even if you told the model something, it might still use the wrong part of its m
 
 ### Tokens
 
-For tools that are likely included in the training data, like AFL++ or nmap, the model probably already knows how to use them, so adding an MCP or skill makes it worse. Try not to use skills or MCPs unless you have a good reason.
+For tools that are likely included in the training data, like `AFL++` or `nmap`, the model probably already knows how to use them, so adding an MCP or skill makes it worse. Try not to use skills or MCPs unless you have a good reason.
 
 By the way, using less popular languages, like Haskell or Czech, will result in more tokens, since the tokenizer optimizes for the most common patterns in the training data.
 
@@ -69,6 +57,18 @@ The Haskell equivalent translates into more tokens, even though it's shorter:
 ![haskell_tokens](/web/Screenshot%20From%202026-03-11%2023-08-45.png)
 
 Context has an impact on token usage, so it literally means you pay for using Czech instead of English.
+
+## Determinism
+
+There is [inherent randomness](https://thinkingmachines.ai/blog/defeating-nondeterminism-in-llm-inference/) in how models interpret prompts and generate responses. Even with careful prompting, the model may perform differently on the same inputs. I advise letting models run multiple times for more consistent results. Always remember to clear context between runs, because context pollution will lead to regression over the same findings.
+
+For example, I built a tool for finding "interesting" scopes in code that repeatedly runs multiple agents which vote on whether a scope is interesting (read: vulnerable) or not.
+
+Another important aspect to consider when running agents in a loop is memory management. If you are running an agent more than once with the same prompt and clean context, you have to be careful about what the model remembers from previous runs.
+
+Always look out for memory files (such as `MEMORY.md`) in the repo, because, as statistical models, even if you say "Stack overflows are not considered security vulnerabilities", the model will still, at best, convolute messages about unnecessary comments on the findings and, in the worst case, will repeatedly output the same findings. If you want to ignore something, remove any memory files from the repo before running the model, and put a very general term in the initial prompt to avoid the whole XYZ class of vulnerabilities.
+
+But be careful with too many negations in the prompt, because the model may do exactly what you're trying to avoid after a few rounds of context compaction.
 
 ## Models
 

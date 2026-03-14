@@ -7,16 +7,15 @@ Published: 2026-03-12
 
 > As usual, any information in this post will be obsolete with the release of a new "industry-disruptive" model (which happens every two weeks :)).
 
+Over the past two months, I have been building various AI SAST and DAST prototypes for vulnerability research and bug hunting. I have spent an unhealthy amount of time experimenting with different approaches and tools. This led to the discovery of multiple vulnerabilities in open-source projects such as Mozilla Firefox. As result of my findings, I started to believe that AI **could** replace at least 40% of the work of a human vulnerability researcher, mainly because it reads code more efficiently than humans do.
 
-Over the past months, I have been building various AI SAST and DAST prototypes for vulnerability research and bug hunting. I tried different approaches, models, and tools, but spoiler alert: I was not able to build **anything better than the default Claude Code**. It might be a skill issue, or it may be because *nobody* has created a better AI security tool than the default Claude with Opus 4.6.
+I tried different approaches, models, and tools, but spoiler alert: I was not able to build **anything better than the default Claude Code**. It might be a skill issue, or it may be because *nobody* has created a better AI security tool than the default Claude with Opus 4.6.
 
-This post discusses my findings from using general AI coding tools such as Claude, Gemini-cli, and Codex. It assumes the reader is familiar with these tools and how they work internally. That said, I gathered some insights on how to use and optimize them to find vulnerabilities.
-
-During my experiments, I found **zero-day vulnerabilities** in widely used open-source projects, which I will hopefully cover in the future. As a result, I wholeheartedly believe that AI **could** replace at least 40% of the work of a human vulnerability researcher, mainly because it reads code more efficiently than humans do.
+Even though I failed to build anything better, I gained valuable insights into how these tools work and how you can optimize your usage of them.
 
 ## Prompting
 
-Although prompting might seem like pseudoscience, it is, unfortunately, the most important part of your setup. Even the best current models cannot construct a reasonable threat model. Even in well-known, well-documented codebases like GitLab or Mattermost, the models struggle to differentiate between suspicious-sounding features and actual vulnerabilities.
+Although prompting might seem like pseudoscience, it is, unfortunately, one of the most important parts of your setup. Even the best current models cannot construct a reasonable threat model. Even in well-known, well-documented codebases like GitLab or Mattermost, the models struggle to differentiate between suspicious-sounding features and actual vulnerabilities.
 
 For a real-world example: if code has a function named `is_whitelisted()` that can be bypassed, the models will report it as a finding even if allowlisting is a function on the frontend just for backward compatibility. Naming might be misleading, but it's not a vulnerability.
 
@@ -42,8 +41,6 @@ Every [MCP](https://modelcontextprotocol.io/docs/getting-started/intro), [skill]
 
 Even if you told the model something, it might still use the wrong part of its memory to back up its claims, leading to bad outputs. This is not often a problem with the model itself, because it reasons based on memory, but memory pollution is a real issue.
 
-### Tokens
-
 For tools that are likely included in the training data, like `AFL++` or `nmap`, the model probably already knows how to use them, so adding an MCP or skill makes it worse. Try not to use skills or MCPs unless you have a good reason.
 
 By the way, using less popular languages, like Haskell or Czech, will result in more tokens, since the tokenizer optimizes for the most common patterns in the training data.
@@ -58,9 +55,13 @@ The Haskell equivalent translates into more tokens, even though it's shorter:
 
 Context has an impact on token usage, so it literally means you pay for using Czech instead of English.
 
+This is relevant not only for security researchers but for any AI practitioner, context management directly affects cost and speed by which models can process information and generate responses.
+
 ## Determinism
 
-There is [inherent randomness](https://thinkingmachines.ai/blog/defeating-nondeterminism-in-llm-inference/) in how models interpret prompts and generate responses. Even with careful prompting, the model may perform differently on the same inputs. I advise letting models run multiple times for more consistent results. Always remember to clear context between runs, because context pollution will lead to regression over the same findings.
+Everybody probably asked themselves why the model always answers differently and maybe you even wondered if you might have missed something because of this.
+
+I thought its randomness was just a result of random seed, however I found out that there is [inherent randomness](https://thinkingmachines.ai/blog/defeating-nondeterminism-in-llm-inference/) in how models interpret prompts and generate responses. Even with careful prompting, the model may perform differently on the same inputs. I advise letting models run multiple times for more consistent results. Always remember to clear context between runs, because context pollution will lead to regression over the same findings.
 
 For example, I built a tool for finding "interesting" scopes in code that repeatedly runs multiple agents which vote on whether a scope is interesting (read: vulnerable) or not.
 
@@ -72,11 +73,11 @@ But be careful with too many negations in the prompt, because the model may do e
 
 ## Models
 
-I tried ChatGPT, Claude, and other models, but none of them could outperform Opus 4.6, not even newer GPT 5.4. I am not saying the models are better or worse; I am only saying that Opus was best for vulnerability research.
+I tried ChatGPT, Claude, and other models, but none of them could outperform Opus 4.6 in finding vulns, not even newer GPT 5.4. I am not saying the models are better or worse; I am only saying that Opus was best for vulnerability discovery.
 
 However, not all Opuses are equal; for example, the Opus in [Antigravity](https://antigravity.google/) is much weaker than the one in Claude Code. I heard that the success of Opus can be attributed to Anthropic's focus on building very good integration with basic tooling like bash and sed, instead of trying to make a cheaper model more usable with fancy tooling like [vector indexing](https://cursor.com/docs/agent/tools/search). However, reality might be more complex, and only time will tell.
 
-By the way, for searching information, Gemini's web client with "deep research" is much better than any alternatives, even though Gemini is considered a less capable model compared to others. I guess it makes sense that Google as a company makes great search tools.
+By the way, for searching information, Gemini's web client with "deep research" is much better than any alternatives, even though Gemini is considered a less capable model compared to others. I guess it makes sense that Google as a company makes great search tools :).
 
 ## What AI can find
 

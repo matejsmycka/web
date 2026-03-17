@@ -52,11 +52,16 @@ jobs:
           # For maximum backward compatibility with Hugo modules
           HUGO_ENVIRONMENT: production
           HUGO_ENV: production
-        run: "hugo" 
+        run: "hugo"
+      - name: Assemble deploy directory
+        run: |
+          mkdir -p dist/web
+          cp -r public/* dist/web/
+          cp redirect/index.html dist/index.html
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./public
+          path: ./dist
 
   # Deployment job
   deploy:

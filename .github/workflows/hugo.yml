@@ -53,15 +53,10 @@ jobs:
           HUGO_ENVIRONMENT: production
           HUGO_ENV: production
         run: "hugo"
-      - name: Assemble deploy directory
-        run: |
-          mkdir -p dist/web
-          cp -r public/* dist/web/
-          cp redirect/index.html dist/index.html
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./dist
+          path: ./public
 
   # Deployment job
   deploy:

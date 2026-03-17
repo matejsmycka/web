@@ -1,28 +1,76 @@
 .page-home {
-  text-align: center;
-  .title {
+  .home-hero {
+    min-height: calc(100vh - 70px);
+    display: flex;
+    align-items: center;
+    padding: 3rem 0;
+  }
+
+  .home-title {
+    font-size: 2.8rem;
     font-weight: lighter;
+    margin-bottom: 1rem;
     font-family: $font-family-base;
   }
-  p {
-    margin: 0 auto;
-    font-size: 1.2rem;
+
+  .home-subtitle {
+    font-size: 1.1rem;
+    color: $gray-600;
     font-weight: lighter;
-    margin-bottom: 40px;
-    @include media-breakpoint-up(md) {
-      width: 80%;
-    }
-    @include media-breakpoint-up(lg) {
-      width: 60%;
+    margin-bottom: 2rem;
+    line-height: 1.6;
+  }
+
+  .home-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 3rem;
+
+    a {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      color: $primary;
+      text-decoration: none;
+      font-size: 0.95rem;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.2s;
+
+      svg {
+        width: 1.1em;
+        height: 1.1em;
+        fill: currentColor;
+        flex-shrink: 0;
+      }
+
+      &:hover {
+        border-color: $primary;
+      }
     }
   }
-  .terminal {
-    border-radius: 3px;
-    margin: 0 auto;
-    margin-top: -200px;
-    img {
-      width: 100%;
-      height: auto;
+
+  .home-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    border-top: 1px solid $gray-200;
+    padding-top: 2rem;
+  }
+
+  .home-nav-item {
+    display: inline-block;
+    color: $dark;
+    text-decoration: none;
+    font-size: 1rem;
+    padding: 0.4rem 0;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.2s, color 0.2s;
+    width: fit-content;
+
+    &:hover {
+      color: $primary;
+      border-color: $primary;
     }
   }
 }

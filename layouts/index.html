@@ -5,45 +5,36 @@
 
 {{ define "meta_tags" }}
 <meta name="description" content="{{ .Site.Params.homepage_meta_tags.meta_description }}" />
-<meta property="og:title" content="{{ .Site.Params.homepage_meta_tags.meta_og_title }}" />
-<meta http-equiv="refresh" content="0; url=/web/contents/" />
 {{ end }}
 
 {{ define "main" }}
-<div class="strip">
-  <div class="container pt-4 pt-md-6 pb-4 pb-md-6">
-    <div class="row">
-      <div class="col-12">
-        <h1 class="title">{{ .Title | default .Site.Title }}</h1>
-        <div class="content">
-          {{ if .Content }}
-          {{ .Content }}
-          {{ else }}
-          <p>{{ .Site.Params.homepage_intro }}</p>
+<div class="home-hero">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-12 col-md-8 col-lg-6">
+        <h1 class="home-title">Matej Smycka</h1>
+<div class="home-links">
+          <a href="https://github.com/MatejSmycka" target="_blank" rel="noopener">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.21 11.39.6.11.82-.26.82-.58v-2.23c-3.34.73-4.03-1.42-4.03-1.42-.55-1.39-1.34-1.76-1.34-1.76-1.09-.74.08-.73.08-.73 1.2.08 1.84 1.24 1.84 1.24 1.07 1.83 2.81 1.3 3.49 1 .11-.78.42-1.31.76-1.61-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.12-.3-.54-1.52.12-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 6.01 0c2.29-1.55 3.3-1.23 3.3-1.23.66 1.66.24 2.88.12 3.18.77.84 1.24 1.91 1.24 3.22 0 4.61-2.81 5.63-5.48 5.92.43.37.82 1.1.82 2.22v3.29c0 .32.19.69.8.58C20.56 21.8 24 17.3 24 12 24 5.37 18.63 0 12 0z"/></svg>
+            GitHub
+          </a>
+          <a href="https://app.hackthebox.com/public/users/451820" target="_blank" rel="noopener">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M11.998 0a1.4 1.4 0 0 0-.496.09L2.886 4.01a1.4 1.4 0 0 0-.884 1.299v13.382a1.4 1.4 0 0 0 .884 1.3l8.616 3.918a1.4 1.4 0 0 0 1.156 0l8.456-3.919a1.4 1.4 0 0 0 .884-1.299V5.309a1.4 1.4 0 0 0-.884-1.3L12.658.092A1.4 1.4 0 0 0 12 0zm0 1.597c.072 0 .144.013.214.04l7.597 3.454-7.81 3.49-7.812-3.49 7.597-3.453a.548.548 0 0 1 .214-.04zM3.6 6.367l7.807 3.49v10.73L3.6 16.849V6.367zm16.8 0v10.482l-7.394 3.427V9.857z"/></svg>
+            HackTheBox
+          </a>
+        </div>
+        <div class="home-nav">
+          {{ $contentsSection := .Site.GetPage "/contents" }}
+          {{ if $contentsSection }}
+          {{ range $contentsSection.Pages.ByWeight }}
+          <a class="home-nav-item" href="{{ .Permalink }}">{{ .Title }}</a>
+          {{ end }}
           {{ end }}
         </div>
-        <a class="button button-primary mb-2" href="{{ .Site.Params.homepage_button_link | relURL }}">
-          {{ .Site.Params.homepage_button_text }}
-        </a>
       </div>
     </div>
   </div>
 </div>
-
-{{ if .Site.Params.homepage_image }}
-<div class="strip">
-  <div class="container pt-4 pb-4">
-    <div class="row justify-content-center">
-      <div class="col-12 col-md-10">
-        <div class="terminal">
-          <img src="{{ .Site.Params.homepage_image | relURL}}" />
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-{{ end }}
-
 {{ end }}
 
 {{ define "footer_js" }}

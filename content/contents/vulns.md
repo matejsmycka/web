@@ -2,6 +2,8 @@
 title: 'Found Vulnerabilities'
 date: 2026-01-10T15:14:39+10:00
 weight: 1
+aliases:
+  - /content/vulns/1
 ---
 
 Security research and bug bounty findings.

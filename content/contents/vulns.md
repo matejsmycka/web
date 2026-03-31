@@ -9,6 +9,7 @@ Security research and bug bounty findings.
 
 ## Security Research
 
+- [CVE-2026-4699](https://www.mozilla.org/en-US/security/advisories/mfsa2026-20/#CVE-2026-4699) - OOB write in Firefox - Font rendering
 - [CVE-2025-12097](https://nvd.nist.gov/vuln/detail/CVE-2025-12097) - LFI in NI System Web Server
 - [Hacking via eSCL protocol](https://writeups.csirt.muni.cz/content/blog/escl/) - Article on the eSCL protocol and its security implications.
 

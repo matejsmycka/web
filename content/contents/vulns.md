@@ -7,13 +7,17 @@ weight: 1
 Security research and bug bounty findings.
 <!--more-->
 
-## Security Research
+## Security Research Articles
 
+- [Hacking via eSCL protocol](https://writeups.csirt.muni.cz/content/blog/escl/) - Article on the eSCL protocol and its security implications.
+
+## Vulnerabilities
+
+- [OOB read in Chrome - Image processing](https://issues.chromium.org/issues/492744328) - OOB read in Chrome - Image processing
 - [CVE-2026-8558](https://chromereleases.googleblog.com/2026/05/stable-channel-update-for-desktop_12.html?m=1) - OOB write in Chrome - Font rendering
 - [CVE-2026-41148](https://github.com/mermaid-js/mermaid/security/advisories/GHSA-xcj9-5m2h-648r) - CSS injection in MermaidJS
 - [CVE-2026-4699](https://www.mozilla.org/en-US/security/advisories/mfsa2026-20/#CVE-2026-4699) - OOB write in Firefox - Font rendering
 - [CVE-2025-12097](https://nvd.nist.gov/vuln/detail/CVE-2025-12097) - LFI in NI System Web Server
-- [Hacking via eSCL protocol](https://writeups.csirt.muni.cz/content/blog/escl/) - Article on the eSCL protocol and its security implications.
 
 ## Bug Bounty and Vulnerability Disclosure
 

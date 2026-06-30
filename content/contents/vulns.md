@@ -14,6 +14,7 @@ Security research and bug bounty findings.
 ## Vulnerabilities
 
 - [buganizer/492744328](https://issues.chromium.org/issues/492744328) - OOB read in Chrome - Image processing
+- [buganizer/492209815](https://issues.chromium.org/issues/492209815) - OOB write in Chrome - Font rendering
 - [CVE-2026-8558](https://chromereleases.googleblog.com/2026/05/stable-channel-update-for-desktop_12.html?m=1) - OOB write in Chrome - Font rendering
 - [CVE-2026-41148](https://github.com/mermaid-js/mermaid/security/advisories/GHSA-xcj9-5m2h-648r) - CSS injection in MermaidJS
 - [CVE-2026-4699](https://www.mozilla.org/en-US/security/advisories/mfsa2026-20/#CVE-2026-4699) - OOB write in Firefox - Font rendering

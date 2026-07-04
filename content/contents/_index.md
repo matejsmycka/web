@@ -8,5 +8,6 @@ weight: 1
 
 - [GitHub](https://github.com/MatejSmycka) - My contributions to open-source projects in cybersecurity and exploitation.
 - [HackTheBox](https://app.hackthebox.com/public/users/451820) - Hack The Box is an online platform allowing you to test and advance your skills in cybersecurity.
+- [LinkedIn](https://www.linkedin.com/in/matej-smycka/) - My professional profile and experience.
 
 ---
